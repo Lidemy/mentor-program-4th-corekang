@@ -52,6 +52,10 @@ function solve(lines) {
   }
 }
 
-// 以上通過LIOJ，以下測試資料格式有誤待解
-solve('abbbba'); // true
-solve('accccc'); // false
+// 測試資料格式錯誤
+// solve('abbbba'); // true
+// solve('accccc'); // false
+
+solve(['ac']); // false
+solve(['abbbba']); // true
+solve(['accccc']); // false

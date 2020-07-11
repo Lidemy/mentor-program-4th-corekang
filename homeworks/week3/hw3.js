@@ -3,7 +3,6 @@
 [LIOJ1020 - 判斷質數](https://oj.lidemy.com/problem/1020)
 */
 
-/*
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -17,9 +16,8 @@ rl.on('line', (line) => {
 });
 
 rl.on('close', () => {
-  solve(lines); // 19:3   error  'solve' was used before it was defined
+  solve(lines); /* eslint no-use-before-define: 0 */
 });
-*/
 
 /*
 單獨測試正確
@@ -39,7 +37,7 @@ function isPrime(n) {
   } return true;
 }
 
-function solve(lines) {
+function solve(lines) { /* eslint no-shadow: 0 */
   for (let i = 1; i < lines.length; i += 1) {
     console.log(isPrime(Number(lines[i])) ? 'Prime' : 'Composite');
   }
@@ -51,5 +49,7 @@ function solve(lines) {
 // console.log('isPrime(3)', isPrime(3));
 // console.log('isPrime(4)', isPrime(4));
 // console.log('isPrime(5)', isPrime(5));
-// 加入solve(lines)，測試資料為陣列：
-console.log(solve(['1', '2', '3', '4', '5'])); // 答案卻是：Prime Prime Composite Prime undefined  //待解
+// console.log(solve(['1', '2', '3', '4', '5'])); // 答案錯誤：Prime Prime Composite Prime undefined
+
+// 測試資料（測試時移除標準輸入註解）
+// cat input3.txt | node hw3.js
