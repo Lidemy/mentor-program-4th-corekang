@@ -1,4 +1,4 @@
-const request = require('../../../../../npm/node_modules/request');
+const request = require('request');
 
 request(
   'https://lidemy-book-store.herokuapp.com/books?_limit=10', // 取出前10筆
