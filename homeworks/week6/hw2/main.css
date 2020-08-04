@@ -54,8 +54,12 @@ label .required {
 section fieldset input {
   width: 287px;
   height: 23px;
-  color: #d0d0d0;
+  color: #000000;
   border: solid 1px #d0d0d0;
+}
+
+section fieldset input::-webkit-input-placeholder {
+  color: #d0d0d0;
 }
 
 section fieldset .radio input[type="radio"] {
@@ -80,6 +84,7 @@ button {
   border: 0px;
   border-radius: 3px;
   background-color: #fad312;
+  cursor: pointer;
 }
 
 footer {
