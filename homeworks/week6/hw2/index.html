@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>新拖延運動報名表單</title>
+  <link rel="stylesheet" href="main.css" type="text/css" />
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" type="text/css" />
+</head>
+    
+<body>
+  <form>
+    <h1>新拖延運動報名表單</h1>
+    <p>活動日期：2020/12/10 ~ 2020/12/11</p>
+    <p>活動地點：台北市大安區新生南路二段1號</p>
+    <p class="required">*必填</p>
+    <section>
+      <fieldset>
+        <div>
+          <label for="username"><p class="question-item">暱稱 <span class="required">*</span></p></label>
+          <input type="text" id="username" name="username" placeholder="您的回答" />
+        </div>
+        <div>
+          <label for="email"><p class="question-item">電子郵件 <span class="required">*</span></p></label>
+          <input type="email" id="email" name="useremail" placeholder="您的電子郵件" />
+        </div>
+        <div>
+          <label for="cellphone"><p class="question-item">手機號碼 <span class="required">*</span></p></label>
+          <input type="tel" id="cellphone" name="usercellphone" placeholder="您的手機號碼" />
+        </div>
+        <!--radio-->
+        <div class="radio">
+          <p class="question-item">報名類型 <span class="required">*</span></p>
+          <input type="radio" id="type01" name="type" /><label for="type01">躺在床上用想像力實作</label><br />
+          <input type="radio" id="type02" name="type" /><label for="type02">趴在地上滑手機找現成的</label>
+        </div>
+        <div>
+          <label for="reason"><p class="question-item">怎麼知道這個活動的？ <span class="required">*</span></p></label>
+          <input type="text" id="reason" name="reason" placeholder="您的回答" />
+        </div>
+        <div>
+          <label for="other">
+            <p class="question-item">其他 <span class="required">*</span></p>
+            <p>對活動的一些建議</p>
+          </label>
+          <input type="text" id="other" name="other" placeholder="您的回答" />
+        </div>
+        <div>
+          <p class="submit"><button type="submit">提交</button></p>
+          <p>請勿透過表單送出您的密碼。</p>
+        </div>
+      </fieldset>
+    </section>
+  </form>
+  <footer>
+    <div class="footer__info">
+      <p>© 2020 © Copyright. All rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
