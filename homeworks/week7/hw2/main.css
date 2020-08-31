@@ -1,0 +1,347 @@
+.navbar {
+  box-shadow: -1.4px -1.4px 6px 0px #97a2a0;
+}
+
+.navbar .wrapper {
+  background: white;
+  height: 84px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /*垂直置中*/
+  padding: 0px 24px; /*視窗縮小時距離左右側間距*/
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto; /*元素置中*/
+  padding: 0px 12px;
+}
+
+.navbar__site-name {
+  font-size: 36px;
+  color: #489846;
+}
+
+.navbar__list {
+  font-size: 18px;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: row; /*由左至右排列*/
+}
+
+.navbar__list li {
+  margin-left: 12px;
+  border-radius: 8px;
+  transition: background 0.1s ease-in;
+}
+
+.navbar__list li a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  padding: 12px 24px;/*使整個按鈕可連結*/
+}
+
+.navbar__list li.active,
+.navbar__list li:hover {
+  background: #ff7286;
+}
+
+.navbar__list li.active a,
+.navbar__list li:hover a {
+  color: white;
+}
+
+.banner {
+  position: relative; /*定位banner*/
+  height: 450px;
+  background: url(image/banner01.jpg) center/cover no-repeat; /*圖片屬性支援 RWD*/
+}
+
+/*banner 亮度調降*/
+.banner::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.banner h1 {
+  font-size: 60px;
+  font-weight: bold;
+  color: white;
+  margin: 0px;
+  /*以下 2 步驟使 h1 在最上層*/
+  position: relative;
+  z-index: 2; 
+  /*以下 4 步驟使 h1 置中*/
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+}
+
+h2 {
+  margin: 0px;
+}
+
+.section {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.section__title {
+  font-size: 36px;
+  border-left: 15px solid #a3dea2;
+  display: inline-block;
+  padding-left: 16px;
+  margin-bottom: 36px;
+}
+
+.section__description {
+  font-size: 16px;
+  line-height: 2em; /*rem：針對 body fontsize*/
+  margin: 0px 0px 68px 0px; /*順時鐘：上右下左*/
+}
+
+.button {
+  font-size: 36px;
+  color: #3e613d;
+  padding: 60px 80px;
+  display: inline-block;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+.btn-order {
+  background: #a8e8e1;
+}
+
+.btn-query {
+  background: #f9f9b5;
+  margin-left: 23px;
+}
+
+.section__images {
+  display: flex;
+}
+
+.section__images div {
+  width: 25%;
+}
+
+.section__images img {
+  width: 100%;
+}
+
+/*自己實作：吃過都說好 start*/
+
+.section__comment {
+  /*text-align: center;*/
+  display: flex;
+  margin-top: 72px;
+}
+
+.section__eachcomment + .section__eachcomment {
+  margin-left: 16px;
+}
+
+.section__eachcomment {
+  /*width: 565px;*/
+  height: 200px;
+  border: solid 1px #c7e5ec;
+  border-radius: 5px;
+  box-shadow: -1.4px -1.4px 4px 0px #d8eaef;
+  padding: 16px;
+  position: relative;
+}
+
+.section__comment-user {
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.section__comment-avatar {
+  width: 105px;
+  height: 105px;
+  /*如果非圓形圖片轉為圓形外框*/
+  /*border-radius: 50%;*/
+  /*overflow: hidden;*/
+}
+
+.section__comment-avatar img {
+  width: 100%;
+  height: 100%;
+}
+
+.section__comment-user p {
+  font-size: 16px;
+  line-height: 18px;
+  margin-top: 3px;
+}
+
+.section__comment-content {
+  line-height: 1.5em;
+  position: relative;
+  top: 40%;
+}
+
+/*自己實作：吃過都說好 end*/
+
+.section__faq {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.section__faq-item {
+  display: flex;
+  text-align: left;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #a6e2c0;
+  overflow: hidden;
+  cursor: pointer;
+  /*transition: height 0.2s;*//*動畫嘗試未果，height 滿吃資源*/
+}
+
+.section__faq-item--hide {
+  height: 15px;
+}
+
+.section__faq-item:not(:first-child) {
+  margin-top: 24px;
+}
+
+/*
+.section__faq-item + .section__faq-item {
+  margin-top: 24px;
+}
+*/
+
+.section__faq-num {
+  color: #70b282;
+  font-size: 24px;
+  line-height: 24px;
+  margin-right: 16px;
+}
+
+.section__faq-content h2 {
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 24px;
+  margin: 0px;
+}
+
+.section__faq-content p {
+  font-size: 16px;
+}
+
+footer {
+  margin-top: 48px;
+}
+
+.footer__top {
+  background: #e8efee;
+  padding: 32px;
+}
+
+.footer__top .wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__info {
+  margin-right: 16px; /*手機版間距*/
+}
+
+.footer__info div + div { /* div 後面的 div*/
+  margin-top: 10px;
+}
+
+.footer__site {
+  font-size: 36px;
+  color: #489846;
+}
+
+.footer__bottom {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  background: #35564b;
+  padding: 12px;
+}
+
+
+/*手機版*/
+
+@media(max-width: 823px) { /*x老師：768px*/
+  .navbar .wrapper {
+    height: 120px;
+    flex-direction: column; /*上下排列*/
+    justify-content: space-between; /*貼合陰影*/
+    padding: 0px;
+  }
+  
+  .navbar__site-name {
+    margin-top: 10px;
+  }
+  
+  .navbar__list {
+    display: flex; /*按鈕均分*/
+    width: 100%; /*覆蓋整個元素*/
+  }
+  
+  .navbar__list li {
+    flex: 1;
+    margin-left: 0px;
+    border-radius: 0px; /*手機版沒有 hover 效果，不會奇怪*/
+    text-align: center;
+  }
+
+  .banner {
+    height: 250px;
+  }
+
+  .btn-query {
+    margin-left: 0px;
+    margin-top: 16px;
+  }
+
+  .section__images {
+    flex-direction: column;
+  }
+
+  .section__images div {
+    width: 100%;
+  }
+
+  .footer__top .wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .footer__info {
+    margin-right: 0px;
+    margin-top: 16px;
+  }
+
+  .section__comment {
+    flex-direction: column;
+  }
+
+  .section__eachcomment + .section__eachcomment {
+    margin-left: 0px;
+    margin-top: 80px;
+  }
+}
