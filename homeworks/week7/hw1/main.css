@@ -1,0 +1,98 @@
+body {
+  background: rgba(0, 0, 0, 0.3);
+  font-family: monospace;
+}
+
+.wrapper {
+  background: white;
+  max-width: 645px;
+  border-top: 8px solid #fad312;
+  box-shadow: 1.8px 2.4px 5px 0px rgba(0, 0, 0, 0.3);
+  padding: 64px 32px;
+  margin: 10% auto;
+}
+
+.signup-form__title {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0px;
+}
+
+.signup-form__info {
+  font-size: 14px;
+  line-height: 1.5em;
+  margin-top: 32px;
+}
+
+.signup-form__notice {
+  font-size: 16px;
+  color: #e74149;
+  margin-top: 20px;
+}
+
+section fieldset { /*指定 section，消除 section、field 邊距*/
+  border: 0px;
+  padding: 0px;
+}
+
+.input-block {
+  margin-top: 55px;
+}
+
+.input-block__title {
+  font-size: 20px;
+}
+
+.input-block__input {
+  margin-top: 20px;
+}
+
+.input-block__input input[type=text] {
+  font-size: 16px;
+  width: 230px;
+  border: 1px solid #d0d0d0;
+  padding: 8px;
+}
+
+.input-block__input label {
+  display: block;
+  margin-top: 12px;
+}
+
+.input-block__error {
+  color: #e74149;
+  margin-top: 4px;
+  position: absolute;
+}
+
+.input-block__sugg {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.required .input-block__title:after {
+  content: "*";
+  color: #e74149;
+}
+
+.hide-error .input-block__error{
+  visibility: hidden;
+}
+
+.signup-form__submit {
+  background: #fad312;
+  font-size: 15px;
+  color: black;
+  margin-top: 48px;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 4px;
+}
+
+footer {
+  background: black;
+  font-size: 13px;
+  color: #999999;
+  text-align: center;
+  padding: 24px 12px;
+}

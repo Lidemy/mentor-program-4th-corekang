@@ -1,0 +1,257 @@
+/* ----- initialize ----- */
+body {
+  font-family: 'Roboto', sans-serif;
+  padding: 10px;
+  margin: 0px;
+}
+
+.btn {
+  color: #189BA3;
+  background: transparent;
+  border: inherit;
+  padding: 0px;
+  margin: 0px;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: inherit;
+}
+
+/* ----- main div ----- */
+
+.wrapper {
+  color: #189BA3;
+  background-color: #FFFDE7;
+  max-width: 600px;
+  padding: 15px 20px 50px 20px; /* 上右下左 */
+  margin: 100px auto;
+  box-shadow: 2px 2px 6px #CCCCCC;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.wrapper h1 {
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.wrapper:before, .wrapper:after {
+  width: 30px;
+  height: 30px;
+  background-color: #6FC6CC;
+  border-radius: 50%;
+  box-shadow: 3px 3px 4px #CCCCCC;
+  display: block;
+  content: "";
+  position: absolute;
+  top: 30px;
+}
+
+.wrapper:before {
+  left: 30px;
+}
+.wrapper:after {
+  right: 30px;
+}
+
+.todolist-header {
+  padding: 0px 10px;
+  margin-bottom: 30px;
+}
+
+/* .todolist-block {} */
+
+.todolist-single {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.todolist-single:hover {
+  background: #FFFFFF;
+}
+
+.todolist-content {
+  flex: 1;
+  height: 15px; /* 強制垂直置中 */
+}
+
+/* ----- main input & button ----- */
+
+/* .todolist-create {} */
+
+.todolist-input {
+  font-size: 20px;
+  color: #189BA3;
+  width: 100%;
+  background-color: #FFFDE7;
+  border: inherit;
+  padding: 5px;
+}
+
+.todolist-input::placeholder {
+  color: #B0CCCE;
+}
+
+.todolist-input:focus {
+  outline: inherit;
+}
+
+.todolist-input-underline {
+  width: 0px;
+  height: 2px;
+  background-color: #189BA3;
+  /*position: absolute;*/
+  /*bottom: -1px;*/
+  left: 50%;
+  transition: all 0.2s;
+}
+
+.todolist-input:focus + .todolist-input-underline {
+  width: 100%;
+  left: 0px;
+}
+
+.todolist-label {
+  font-size: 22px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  margin-right: 10px;
+  display: block;
+  position: relative;
+  clear: both;
+  cursor: pointer;
+}
+
+.todolist-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.todolist-label .todolist-checkbox-custom {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: 1px solid #189BA3;
+  border-radius: 3px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+}
+
+.todolist-label input:checked ~ .todolist-checkbox-custom {
+  background-color: #FFFFFF;
+  opacity: 0.4;
+  border: 1px solid #189BA3;
+  border-radius: 3px;
+  transform: rotate(0deg) scale(1);
+  -webkit-transform: rotate(0deg) scale(1);
+  -ms-transform: rotate(0deg) scale(1);
+}
+
+.todolist-label .todolist-checkbox-custom::after {
+  width: 0px;
+  height: 0px;
+  opacity: 1;
+  border: 1px solid #189BA3;
+  border-radius: 3px;
+  border-width: 0px 3px 3px 0px;
+  position: absolute;
+  content: "";
+  top: 12px;
+  left: 12px;
+  transform: rotate(0deg) scale(0);
+  -webkit-transform: rotate(0deg) scale(0);
+  -ms-transform: rotate(0deg) scale(0);
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+}
+
+.todolist-label input:checked ~ .todolist-checkbox-custom::after {
+  width: 6px;
+  height: 12px;
+  background-color: transparent;
+  opacity: 0.4;
+  border: 1px solid #189BA3;
+  border-width: 0px 2px 2px 0px;
+  border-radius: 0px;
+  top: 3px;
+  left: 8px;
+  transform: rotate(45deg) scale(1);
+  -webkit-transform: rotate(45deg) scale(1);
+  -ms-transform: rotate(45deg) scale(1);
+}
+
+/* ripple effect start */
+
+.todolist-label .todolist-checkbox-custom::before {
+  width: 0px;
+  height: 0px;
+  border: 1px solid rgba(24, 155, 163, 0.5); /* #189BA3 */
+  border-radius: 5px;
+  position: absolute;
+  content: "";
+  left: 10px;
+  top: 10px;
+  transform: scale(0);
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+}
+
+.todolist-label input:checked ~ .todolist-checkbox-custom::before {
+  width: 24px;
+  height: 24px;
+  opacity: 0;
+  border-radius: 3px;
+  left: -3px;
+  top: -3px;
+  z-index: 999;
+  transform: scale(3);
+  -webkit-transform: scale(3);
+  -ms-transform: scale(3);
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+}
+
+/* ripple effect end */
+
+/* .todolist-check {} */
+
+.todolist-done .todolist-content {
+  text-decoration: line-through;
+  opacity: 0.4;
+}
+
+/* .btn-create {} */
+
+.btn-delete {
+  font-size: 22px;
+  height: 22px; /* 強制垂直置中 */
+  position: relative;
+  top: 0px;
+  right: 20px;
+}
+
+.btn-delete span {
+  font-weight: bold;
+}

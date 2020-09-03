@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>新拖延運動報名表單</title>
+    <link rel="stylesheet" href="main.css" type="text/css" />
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" type="text/css" />
+    <script src="form-validation.js"></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <form class="signup-form">
+        <h1 class="signup-form__title">新拖延運動報名表單</h1>
+        <p class="signup-form__info">
+          活動日期：2020/12/10 ~ 2020/12/11<br>
+          活動地點：台北市大安區新生南路二段1號
+        </p>
+        <p class="signup-form__notice">*必填</p>
+        <section>
+          <fieldset>
+            <!--username-->
+            <div class="input-block required hide-error">
+              <div class="input-block__title">暱稱</div>
+              <div class="input-block__input">
+                <input type="text" id="username" name="username" placeholder="請輸入暱稱" />
+              </div>
+              <div class="input-block__error">請輸入暱稱</div>
+            </div>
+            <!--email-->
+            <div class="input-block required hide-error">
+              <div class="input-block__title">電子郵件</div>
+              <div class="input-block__input">
+                <input type="text""" id="email" name="email" placeholder="範例：username@gmail.com" />
+              </div>
+              <div class="input-block__error">請輸入電子郵件</div>
+            </div>
+            <!--tel-->
+            <div class="input-block required hide-error">
+              <div class="input-block__title">手機號碼</div>
+              <div class="input-block__input">
+                <input type="text" id="tel" name="tel" placeholder="範例：0900-123456" />
+              </div>
+              <div class="input-block__error">請輸入手機號碼</div>
+            </div>
+            <!--type:radio-->
+            <div class="input-block required hide-error">
+              <div class="input-block__title">報名類型</div>
+              <div class="input-block__input">
+                <label for="type01"><input type="radio" id="type01" name="type" /> 躺在床上用想像力實作</label>
+                <label for="type02"><input type="radio" id="type02" name="type" /> 趴在地上滑手機找現成的</label>
+              </div>
+              <div class="input-block__error">請選擇報名類型</div>
+            </div>
+            <!--reason-->
+            <div class="input-block required hide-error">
+              <div class="input-block__title">怎麼知道這個活動的？</div>
+              <div class="input-block__input">
+                <input type="text" id="reason" name="reason" placeholder="請輸入答案" />
+              </div>
+              <div class="input-block__error">請輸入答案</div>
+            </div>
+            <!--other-->
+            <div class="input-block">
+              <div class="input-block__title">其他</div>
+              <div class="input-block__sugg">對活動的一些建議</div>
+              <div class="input-block__input">
+                <input type="text" id="other name="other" placeholder="請輸入建議" />
+              </div>
+            </div>
+            <input class="signup-form__submit" type="submit" value="提交" />
+            <p class="signup-form__info">請勿透過表單送出您的密碼。</p>
+          </fieldset>
+        </section>
+      </form>
+    </div>
+    <footer>
+      <div class="footer__info">© 2020 © Copyright. All rights Reserved.</div>
+    </footer>
+    <!--
+    <script>
+      document.querySelector("form").addEventListener("submit", function(e) {
+        e.preventDefault(); // 阻止預設事件
+        let hasError = false;
+        let enterValue = {};
+        const element = document.querySelectorAll(".required");
+
+        for (element_copy of element) {
+          const input = element_copy.querySelector("input[type=text]");
+          const radio = element_copy.querySelectorAll("input[type=radio]");
+          let hasValue = true;
+
+          if (input) {
+            enterValue[input.name] = input.value;
+            
+            if (!input.value) {
+              hasValue = false;
+            } 
+          } else if (radio.length) {
+            hasValue = [...radio].some(radio => radio.checked);
+            
+            if (hasValue) {
+              let checkedRadio = element_copy.querySelector("input[type=radio]:checked");
+              enterValue[checkedRadio.name] = checkedRadio.value;
+            }
+          } else {
+            continue;
+          }
+          
+          if (!hasValue) {
+            element_copy.classList.remove("hide-error");
+            hasError = true;
+          } else {
+            element_copy.classList.add("hide-error");
+          }
+        }
+
+        if (!hasError) {
+          alert(JSON.stringify(enterValue));
+        }
+      })
+    </script>
+    -->
+  </body>
+</html>
