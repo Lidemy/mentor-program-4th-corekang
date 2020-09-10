@@ -1,0 +1,286 @@
+/* ----- initialize ----- */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* ----- main ----- */
+
+.navbar {
+  box-shadow: -1.4px -1.4px 6px 0 #97A2A0;
+}
+
+.navbar .wrapper {
+  height: 84px;
+  background: #FFFFFF;
+  padding: 0 24px; /* 視窗縮小時左右側間距 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* 垂直置中 */
+}
+
+.wrapper {
+  max-width: 1280px;
+  padding: 0 12px;
+  margin: 0 auto; /* 元素置中 */
+}
+
+.navbar__site-name {
+  font-size: 36px;
+  color: #489846;
+}
+
+.navbar__list {
+  font-size: 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row; /* 由左至右排列 */
+}
+
+.navbar__list li {
+  border-radius: 8px;
+  margin-left: 12px;
+  transition: background 0.1s ease-in;
+}
+
+.navbar__list li a {
+  text-decoration: none;
+  color: #000000;
+  padding: 12px 24px; /* 整個按鈕可連結 */
+  display: block;
+}
+
+.navbar__list li.active,
+.navbar__list li:hover {
+  background: #FF7286;
+}
+
+.navbar__list li.active a,
+.navbar__list li:hover a {
+  color: #FFFFFF;
+}
+
+/* ----- raffle ----- */
+
+.raffle {
+  color: #292222;
+  height: calc(100vh - 300px); /* 100vh：目前視窗高度；(navbar + footer) height = 預設 300px */
+  background: url(image/games-bn.jpg) center/cover no-repeat; /* 支援 RWD */
+  margin-top: 2px; /* .navbar 陰影顯現 */
+  position: relative;
+  overflow: scroll; /* 陽春版：手機版寬度縮小覆蓋 footer，改為僅此區捲動 */
+}
+
+.raffle.first-prize {
+  color: rgba(72, 154, 71, 0.7);
+  background-image: url(image/first.jpg);
+}
+
+.raffle.second-prize {
+  color: rgba(72, 154, 71, 0.7);
+  background-image: url(image/second.jpg);
+}
+
+.raffle.third-prize {
+  color: rgba(72, 154, 71, 0.7);
+  background-image: url(image/third.jpg);
+}
+
+.raffle.none-prize {
+  color: #FFFFFF;
+  background: #000000;
+}
+
+.raffle-content {
+  text-align: center;
+  /* color: #322929; */
+  max-width: 500px; /* RWD */
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 40px 40px 24px 20px;
+  margin: 0;
+  /* 以下 2 步驟使此區在最上層 */
+  position: relative;
+  z-index: 2;
+  /* 以下 3 步驟使此區置中 */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hide {
+  display: none;
+}
+
+.raffle-content-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #5EC1B6;
+  margin-bottom: 24px;
+}
+
+.raffle-content-item {
+  font-size: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: flex-start; /* 靠上對齊 */
+}
+
+.raffle-content-item-title {
+  font-size: 18px;
+  font-weight: bold;
+  width: 90px;
+}
+
+.raffle-content-item-desc {
+  flex: 1; /* 占滿剩餘空間 */
+  text-align: left;
+  line-height: 1.5em;
+  margin-left: 10px;
+}
+
+.raffle-content-btn {
+  text-align: center;
+  color: #FFFFFF;
+  width: 80%;
+  background: #E62A45;
+  border-radius: 8px;
+  padding: 16px 0;
+  margin: 0 auto; /* 「一行元素、寬度未滿」進行置中 */
+  cursor: pointer;
+}
+
+.raffle-result {
+  /* color: #292222; */ /* 改至 .raffle，.raffle.none-prize color 才有作用，應該是 CSS 權重問題 */
+  text-align: center;
+  max-width: 700px;
+  position: relative;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.raffle-result-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 55px;
+}
+
+.raffle-result-btn {
+  text-align: center;
+  color: #FFFFFF;
+  width: 330px; /* 或 max-width: 330px; 螢幕 330px 以下自動轉為 100% */
+  background: #E62A45;
+  border-radius: 8px;
+  padding: 16px 0;
+  margin: 0 auto; /* 「一行元素、寬度未滿」進行置中 */
+  cursor: pointer;
+}
+
+/* ----- footer----- */
+
+.footer {
+  /* 網頁內容短少時，以下 2 步驟保持 sticky footer */
+  line-height: normal; /* normalize.css: html { line-height: 1.15; } 導致 footer 下方空白列 */
+  height: 0;
+  /* margin-top: 48px; */ /* week8 hw1 忽略 */
+}
+
+.footer__top {
+  background: #E8EFEE;
+  padding: 32px;
+}
+
+.footer__top .wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__info {
+  margin-right: 16px; /* 手機版間距 */
+}
+
+.footer__info div + div { /* div 及其之後 div */
+  margin-top: 10px;
+}
+
+.footer__site {
+  font-size: 36px;
+  color: #489846;
+}
+
+.footer__bottom {
+  font-size: 16px;
+  color: #FFFFFF;
+  text-align: center;
+  background: #35564B;
+  padding: 12px;
+}
+
+.footer a {
+  color: #35564B;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #489846;
+  text-decoration: underline;
+}
+
+/* ----- 手機版 ----- */
+
+@media(max-width: 768px) {
+
+  .navbar .wrapper {
+    height: 120px;
+    padding: 0;
+    flex-direction: column; /* 上下排列 */
+    justify-content: space-between; /* 貼合陰影 */
+  }
+  
+  .navbar__site-name {
+    margin-top: 10px;
+  }
+  
+  .navbar__list {
+    width: 100%; /* 覆蓋整個元素 */
+    display: flex; /* 按鈕均分 */
+  }
+  
+  .navbar__list li {
+    text-align: center;
+    border-radius: 0; /* 因為手機版沒有 hover 效果 */
+    margin-left: 0;
+    flex: 1;
+  }
+
+  .raffle-content {
+    border-radius: 0;
+    /* 手機版此區貼合左上角故取消 */
+    /*
+    top: 0;
+    left: 0;
+    transform: none;
+    */
+  }
+
+  .footer__top .wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .footer__info {
+    margin-top: 16px;
+    margin-right: 0;
+  }
+}
