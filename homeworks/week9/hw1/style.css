@@ -1,0 +1,136 @@
+body {
+  background: #F7F7F7;
+  margin: 0; /* 清除瀏覽器預設值 */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Reload 沒有更新代表快取，開啟 Chrome DevTools > Network > Reload */
+
+.warning {
+  color: #A20606;
+  text-align: center;
+  background:#FFC4C6;
+  padding: 10px;
+}
+
+.board {
+  background: #FFFFFF;
+  width: 100%;
+  max-width: 700px; /* 螢幕大於此值，此區寬度最大為此值；螢幕小於此值，此區寬度為 100% */
+  box-shadow: 1px 1px 3px 0px #E8E8E8;
+  border-radius: 5px;
+  padding: 10px 30px;
+  margin: 20px auto; /* 水平置中 */
+}
+
+.board-member {
+  text-align: end;
+}
+
+.board-btn {
+  font-size: 16px;
+  color: #000000;
+  text-decoration: none;
+  background: #FFFFFF;
+  /* width: 100px; */ /* 無效 */
+  border: 1px solid #C2DFFB;
+  border-radius: 5px;
+  /* min-width: 20px;*/ /* 因為 inline 所以無效，可改為 inline-block */
+  padding: 10px 30px;
+  display: inline-block; /* padding 後不會吃掉 .board padding*/
+}
+
+.board-title {
+  color: #3DB4FD;
+}
+
+.board-err {
+  color: #A20606;
+  text-align: center;
+  background: #FFC4C6;
+  padding: 10px;
+}
+
+/* .board-form {} */
+
+.board-form textarea {
+  width: 100%;
+  border: 1px solid #C2DFFB;
+  padding: 10px;
+}
+
+.board-nickname {
+  margin-bottom: 10px;
+}
+
+.board-nickname input {
+  border: 1px solid #C2DFFB;
+  padding: 5px;
+}
+
+.board-btn:focus, .board-btn:hover,
+textarea:focus, textarea:hover,
+input:focus, input:hover {
+  background: #E4F0FB;
+  outline: none;
+  box-shadow: 0 0 0 1px #3DB4FD; /* 模擬 outline 圓角效果 */
+}
+
+.board-submit {
+  font-size: 16px;
+  color: #583C63;
+  background: #FFFFFF;
+  width: 100px;
+  border: 1px solid #C2DFFB;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.board-hr {
+  height: 2px;
+  max-width: 98%;
+  background: #E8E8E8;
+  margin: 20px auto;
+}
+
+.card {
+  min-height: 70px;
+  padding: 10px 5px;
+  /* margin: 20px 0; */
+  display: flex; /* 讓底下元素左右排版 */
+}
+
+.card:hover {
+  background: #C2DFFB;
+}
+
+.card-avatar {
+  width: 50px;
+  height: 50px;
+  min-width: 50px; /* 避免圓形被壓縮 */
+  background: #E4F0FB;
+  border-radius: 50%;
+}
+
+.card-body {
+  margin-left: 10px;
+}
+
+.card-content {
+  max-width: 100%;
+  margin-top: 8px;
+  white-space: pre-line; /* 呈現斷行內容（置於 word-break 之前才有作用） */
+  word-break: break-all; /* 根據單字斷行，break-word 也可以僅細微差別 */
+}
+
+.card-author {
+  color: #5C9EDC;
+  font-weight: bold;
+}
+
+.card-time {
+  color: #A0A0A0;
+}
