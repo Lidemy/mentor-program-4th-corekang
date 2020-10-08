@@ -59,7 +59,7 @@
           </div>
           <input class="board-submit" type="submit" />
         </form>
-        <h3>你好！<?php echo $user['nickname']; ?> </h3>
+        <h3>你好！<?php echo escape($user['nickname']); ?> </h3>
       <?php } ?>
     </div>
 

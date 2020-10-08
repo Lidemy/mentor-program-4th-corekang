@@ -80,7 +80,7 @@
           </div>
           <input class="board-submit" type="submit" />
         </form>
-        <h3>你好！<?php echo $user['nickname']; ?> </h3><!-- step 15-5：修改暱稱後即時顯示 -->
+        <h3>你好！<?php echo escape($user['nickname']); ?> </h3><!-- step 15-5：修改暱稱後即時顯示 -->
       <?php } ?>
     </div>
 
