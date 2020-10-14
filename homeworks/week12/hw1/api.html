@@ -43,7 +43,7 @@
 
     // Step 6：cursor-based id
     function getDiscussionsAPI(siteKey, before, cb) {
-      let url = `http://localhost:8080/week12-board/api_discussions.php?site_key=${siteKey}`;
+      let url = `http://mentor-program.co/mtr04group5/core/week12/board/api_discussions.php?site_key=${siteKey}`;
 
       if (before) {
         url += '&before=' + before;
@@ -84,7 +84,7 @@
 
         $.ajax({
           type: 'POST',
-          url: 'http://localhost:8080/week12-board/api_add_discussions.php',
+          url: 'http://mentor-program.co/mtr04group5/core/week12/board/api_add_discussions.php',
           data: newDiscussion // ES6 可省略同名值 => data: data => data
         }).done(function(data) {
           if (!data.ok) {

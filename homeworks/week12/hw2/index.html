@@ -125,7 +125,7 @@
     const todoId = searchParams.get('id');
 
     if (todoId) {
-      $.getJSON('http://localhost:8080/week12-todolist/get_todo.php?id=' + todoId, (data) => {
+      $.getJSON('http://mentor-program.co/mtr04group5/core/week12/todolist/get_todo.php?id=' + todoId, (data) => {
         // console.log('data', data);
         const todos = JSON.parse(data.data.todo);
         // console.log('todos:', todos);
@@ -249,7 +249,7 @@
       // Part4-5：Send JSON to server and save
       $.ajax({
         type: 'POST',
-        url: 'http://localhost:8080/week12-todolist/add_todo.php',
+        url: 'http://mentor-program.co/mtr04group5/core/week12/todolist/add_todo.php',
         data: {
           todo: data
         },
