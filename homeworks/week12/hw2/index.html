@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Week12 Todo List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <style>
+    body {
+      background: rgba(0,0,0,0.3);
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .col-lg-6 {
+      background: #ffffff;
+      border: solid 1px rgba(0,0,0,0.3);
+      padding: 40px 50px;
+      box-shadow: 0 2px 1px rgba(0, 0, 0, 0.09), 0 4px 2px rgba(0, 0, 0, 0.09), 0 8px 4px rgba(0, 0, 0, 0.09), 0 16px 8px rgba(0, 0, 0, 0.09), 0 32px 16px rgba(0, 0, 0, 0.09);
+    }
+
+    .todo {
+      display: flex; /* P2-1：Replace d-flex */
+    }
+
+    .todo:hover .btn-delete {
+      opacity: 1;
+    }
+
+    input[type=checkbox]:checked ~ label {
+      color: rgba(0,0,0,0.3);
+      text-decoration: line-through;
+    }
+
+    .todo__content-wrapper {
+      flex: 1;
+    }
+
+    .todo__content {
+      display: block;
+    }
+
+    .btn-delete {
+      opacity: 0;
+    }
+
+    .options div, .clear-all {
+      border: 2px solid transparent;
+      border-radius: 6px;
+      padding: 4px;
+      cursor: pointer;
+    }
+
+    .options div.active {
+      border-color: rgba(255, 0, 0, 0.3);
+    }
+
+    .options div:hover {
+      border-color: rgba(255, 0, 0, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <h1 class="text-center">Todo List</h1>
+        <div class="input-group mb-3">
+          <input type="text" class="input-todo form-control" placeholder="Add todo">
+          <div class="input-group-append">
+            <button class="btn btn-add btn-outline-secondary" type="button">新增</button>
+          </div>
+        </div>
+
+        <div class="todos list-group">
+          <!-- <div class="todo list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            <div class="todo__content-wrapper custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="todo-1">
+              <label class="todo__content custom-control-label" for="todo-1">todo1</label>
+            </div>
+            <button type="button" class="btn-delete btn btn-danger">刪除</button>
+          </div> -->
+        </div>
+
+        <div class="info mt-1 d-flex justify-content-between align-items-center">
+          <div><span class="uncompleted-count"></span> 個未完成</div>
+          <div class="options d-flex">
+            <div class="active" data-filter="all">全部</div>
+            <div class="ml-2" data-filter="uncompleted">未完成</div>
+            <div class="ml-2" data-filter="done">已完成</div>
+          </div>
+          <div class="clear-all">移除已完成待辦事項</div>
+        </div>
+
+        <button type="button" class="btn btn-save btn-primary">儲存</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let id = 1; // P1-3：Increase todo id
+    let todoCount = 0;
+    let uncompletedTodoCount = 0;
+
+    // P1-2：Add todo template
+    const template = `
+      <div class="todo list-group-item list-group-item-action justify-content-between align-items-center {todoClass}">
+        <div class="todo__content-wrapper custom-control custom-checkbox">
+          <input type="checkbox" class="check-todo custom-control-input" id="todo-{id}">
+          <label class="todo__content custom-control-label" for="todo-{id}">{content}</label>
+        </div>
+        <button type="button" class="btn-delete btn btn-danger">刪除</button>
+      </div>
+    `
+
+    // Part4-6：Get ID then load date, use URLSearchParams or JS parse query string to parse url, then show all data
+    // console.log(window.location.search);
+    const searchParams = new URLSearchParams(window.location.search);
+    // console.log(searchParams.get('id'));
+    const todoId = searchParams.get('id');
+
+    if (todoId) {
+      $.getJSON('http://mentor-program.co/mtr04group5/core/week12/todolist/get_todo.php?id=' + todoId, (data) => {
+        // console.log('data', data);
+        const todos = JSON.parse(data.data.todo);
+        // console.log('todos:', todos);
+
+        restoreTodos(todos);
+      });
+    }
+
+    $('.input-todo').keydown(e => {
+      // console.log(e.key);
+      if (e.key === 'Enter') {
+        addTodo();
+      }
+    });
+
+    // P1-1：Add todo
+    $('.btn-add').click(() => {
+      addTodo();
+    });
+
+    // P1-4：Delete todo by Delegate
+    $('.todos').on('click', '.btn-delete', (e) => {
+      // console.log(e.target);
+      $(e.target).parent().remove();
+      todoCount --;
+      // console.log($(e.target).parent().find('.check-todo'));
+      const isChecked = $(e.target).parent().find('.check-todo').is(':checked');
+      // console.log(isChecked);
+
+      if (!isChecked) {
+        uncompletedTodoCount --;
+      } 
+      updateCounter();
+    });
+
+    // P1-5：Checked todo
+    $('.todos').on('change', '.check-todo', (e) => {
+      // console.log(e.target);
+      const target = $(e.target);
+      const isChecked = target.is(':checked');
+      // console.log(isChecked);
+
+      if (isChecked) {
+        target.parents('.todo').addClass('checked'); // for P1-7
+        uncompletedTodoCount --;
+      } else {
+        uncompletedTodoCount ++;
+        target.parents('.todo').removeClass('checked'); // for P1-7
+      }
+      updateCounter();
+    });
+
+    // P1-7：Clear all todos
+    $('.clear-all').click(() => {
+      // console.log($('.todo.checked').length);
+      todoCount -= $('.todo.checked').length
+      $('.todo.checked').remove();
+
+      // .each(): Find all elements
+      /* $('.todo.checked').each((i, el) => {
+        // console.log(i);
+        todoCount --;
+        el.remove();
+      }); */
+    })
+
+    // P1-8：Data Filter
+    $('.options').on('click', 'div', e => {
+      // console.log(e.target);
+      const target = $(e.target);
+      // console.log(target.attr('data-filter'));
+      const filter = target.attr('data-filter');
+      
+      $('.options div.active').removeClass('active');
+      target.addClass('active');
+
+      // P2-2：Fix bug, use .show()、.hide()
+      if (filter === 'all') {
+        $('.todo').show();
+      } else if (filter === 'uncompleted') {
+        $('.todo').show();
+        $('.todo.checked').hide();
+      } else { // done
+        $('.todo').hide();
+        $('.todo.checked').show();
+      }
+    });
+
+    // Part3-0：Expected data
+    /* const todos = [
+      {
+        id: 1,
+        content: 1,
+        isDone: false
+      }, {
+        id: 2,
+        content: 2,
+        isDone: true
+      }
+    ] */
+
+    // Part3-1：Get all todos from UI
+    $('.btn-save').click(() => {
+      let todos = [];
+
+      $('.todo').each((i, element) => {
+        // console.log(element);
+        const input = $(element).find('.check-todo');
+        const label = $(element).find('.todo__content');
+        // console.log(input, label);
+
+        todos.push({
+          id: input.attr('id').replace('todo-', ''),
+          content: label.text(),
+          isDone: $(element).hasClass('checked')
+        })
+      })
+
+      const data = JSON.stringify(todos);
+
+      // Part4-5：Send JSON to server and save
+      $.ajax({
+        type: 'POST',
+        url: 'http://mentor-program.co/mtr04group5/core/week12/todolist/add_todo.php',
+        data: {
+          todo: data
+        },
+        success: (res) => {
+          // console.log('res', res)
+          const resId = res.id;
+
+          window.location = 'index.html?id=' + resId; // After saving
+        },
+        error: () => {
+          alert('Error: Q__Q')
+        }
+      })
+    });
+
+    function escapeHtml(unsafe) {
+      return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function addTodo() {
+      const value = $('.input-todo').val();
+      // console.log(value);
+
+      if (!value) return;
+
+      $('.todos').append(
+        template
+          .replace('{content}', escapeHtml(value))
+          .replace(/{id}/g, id) // .replaceAll('{id}', id); g: global
+      );
+
+      id += 1;
+      todoCount ++;
+      uncompletedTodoCount ++;
+      updateCounter();
+      $('.input-todo').val(''); // Clear value
+    }
+
+    // P1-6：Counter
+    function updateCounter() {
+      $('.uncompleted-count').text(uncompletedTodoCount);
+    }
+
+    function restoreTodos(todos) {
+      // console.log(todos);
+      if (todos.length === 0) return;
+      id = todos[todos.length - 1].id + 1;
+      for (let i = 0; i < todos.length; i += 1) {
+        const todo = todos[i];
+          $('.todos').append(template
+          .replace('{content}', escapeHtml(todo.content))
+          .replace(/{id}/g, todo.id)
+          .replace('{todoClass}', todo.isDone ? 'checked' : '')
+        );
+        todoCount ++;
+        if (todo.isDone) {
+          $('#todo-' + todo.id).prop('checked', true); // jQuery set checkbox checked
+        }
+        if (!todo.isDone) {
+          uncompletedTodoCount ++;
+        }
+      }
+      updateCounter();
+      $('.input-todo').val('');
+    }
+  </script>
+</body>
+</html>
