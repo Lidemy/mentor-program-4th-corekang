@@ -1,0 +1,204 @@
+.banner {
+  background-image: linear-gradient(to top, $grey-0, $grey-26);
+  height: 240px;
+  color: $grey-93;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    font-size: $fs-h3;
+    margin: 0;
+  }
+
+  &__wrapper > div {
+    margin-top: 26px;
+  }
+}
+
+.container-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 138px;
+  min-height: calc(100vh - 350px);
+}
+
+.posts, .container {
+  background: $grey-100;
+  padding: 6px;
+  display: inline-flex;
+  margin: 0 auto;
+  margin-top: -30px;
+  flex-direction: column;
+}
+
+.post {
+  width: 900px;
+  padding: 30px;
+  border: solid 1px $grey-60;
+
+  + .post {
+    margin-top: 24px;
+  }
+
+  &__header {
+    font-size: $fs-base;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__action {
+    padding: 3px 12px;
+    border: solid 1px $grey-66;
+    color: $grey-66;
+    text-decoration: none;
+    font-size: $fs-milli;
+  }
+
+  &__info {
+    margin-top: 19px;
+    padding: 12px 22px;
+    background: $grey-93; /* #eee */
+  }
+
+  &__content {
+    margin-top: 17px;
+    white-space: pre-wrap;
+    line-height: 1.5em;
+  }
+
+  /*
+  pre-wrap：保留所有文本格式，例如：連續空白字元、換行字元，並隨容器縮放自動換行
+  pre-line：相同於 pre-wrap，相異於合併連續空白字元
+  */
+}
+
+.btn-read-more {
+  display: inline-block;
+  padding: 12px 16px;
+  border: solid 1px $grey-45;
+  color: $grey-45;
+  margin-top: 36px;
+  text-decoration: none;
+}
+
+.login-wrapper {
+  margin: 0 auto;
+  border: solid 1px $grey-0;
+  width: 527px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 62px 72px;
+  margin-top: -30px;
+  background: $grey-100;
+
+  form {
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+
+    &[type=submit] {
+      height: 56px;
+      background-image: linear-gradient(to top, $grey-0, $grey-26);
+      color: $grey-100;
+      margin-top: 73px;
+    }
+  }
+
+  h2 {
+    font-size: $fs-h2;
+    font-weight: normal;
+  }
+}
+
+.input {
+  &__field {
+    margin-top: 16px;
+    height: 40px;
+  }
+
+  &__wrapper + &__wrapper {
+    margin-top: 23px;
+  }
+
+  &__label {
+    font-size: $fs-milli;
+    margin-left: 21px;
+  }
+}
+
+.edit-post {
+  width: 900px;
+  padding: 30px;
+  border: solid 1px $grey-60;
+
+  &__title {
+    font-size: $fs-h5;
+  }
+  
+  &__input-wrapper {
+    width: 100%;
+    margin-top: 28px;
+
+    input, textarea {
+      width: 100%;
+      padding: 6px;
+    }
+  }
+
+  &__btn {
+    display: inline-block;
+    padding: 10px 39px;
+    border: solid 1px $grey-45;
+    color: $grey-45;
+    cursor: pointer;
+    margin-top: 25px;
+
+    &-wrapper {
+      text-align: right;
+    }
+  }
+}
+
+.admin-post {
+  padding: 24px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $grey-60;
+  font-size: $fs-milli;
+  width: 920px;
+  
+  &__title {
+    font-size: $fs-base;
+    margin-left: 16px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+  }
+
+  &__created-at {
+    color: $grey-56;
+  }
+
+  &__btn {
+    padding: 4px 8px;
+    border: 1px solid $grey-66;
+    color: $grey-66;
+    cursor: pointer;
+    margin-left: 8px;
+    text-decoration: none;
+
+    &:last-child {
+      margin-right: 16px;
+    }
+  }
+}

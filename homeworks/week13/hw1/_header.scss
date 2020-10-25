@@ -1,0 +1,48 @@
+.navbar {
+  height: 80px;
+
+  &__site-name {
+    font-size: $fs-h3;
+    font-weight: bold;
+
+    a {
+      text-decoration: none;
+      color: $grey-20;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    justify-content: space-between;
+
+    > div {
+      display: flex;
+    }
+
+    li {
+      margin-left: 21px;
+    }
+
+    a {
+      text-decoration: none;
+      color: $grey-47;
+      font-size: $fs-base;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0px 12px;
+}

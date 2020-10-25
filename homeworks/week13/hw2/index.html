@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--  Step 5：Create index.html  -->
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>留言板 plugin</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="./dist/main.js"></script>
+  <script>
+    // Step 8：Become commentPlugin Module
+    $(document).ready(() => {
+      commentPlugin.init({ // commentPlugin: Build global variable
+        siteKey: 'core',
+        apiUrl: 'http://mentor-program.co/mtr04group5/core/week13/board', // http://localhost:8080/week13-board
+        containerSelector: '.comment-area'
+      });
+
+      commentPlugin.init({
+        siteKey: 'core111',
+        apiUrl: 'http://mentor-program.co/mtr04group5/core/week13/board', // http://localhost:8080/week13-board
+        containerSelector: '.comment-area111'
+      });
+    })
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="comment-area">
+      <!-- <form class="form-add-comment">
+        <div class="form-group">
+          <label for="form-nickname">暱稱</label>
+          <input class="form-control" id="form-nickname" name="nickname" type="text">
+          <label for="content-textarea">留言內容</label>
+          <textarea class="form-control" id="content-textarea" name="content" rows="3"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">提交</button>
+      </form>
+      <div class="comments">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">nickname</h5>
+            <p class="card-text">content</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">nickname</h5>
+            <p class="card-text">content</p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div class="comment-area111">
+    </div>
+  </div>
+</body>
+</html>
